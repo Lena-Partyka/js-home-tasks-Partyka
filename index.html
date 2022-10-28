@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Lesson-2</title>
+</head>
+
+<body>
+<script>
+function countVowels() {
+	var k = 0;
+	var vowelsList = ["a", "e", "ё", "и", "о", "у", "э", "ю", "я", "А", "Е", "Ё", "И", "О", "У", "Э", "Ю", "Я"];
+	var f = prompt("Введите строку: ");
+	for (var i = 0; i < f.length; i++)
+		for (var j = 0; j < vowelsList.length; j++)
+			if (f[i] === vowelsList[j]) {
+				++k;
+				break;
+			}
+	return k ? k : "Нет совпадений";
+}
+
+	console.log(countVowels());
+
+	</script>
+</body>
+</html>
