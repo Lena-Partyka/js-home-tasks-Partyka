@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  'use strict'
+
+  var johnBill = {
+    fullName : 'John Smith',
+    bills : [124, 48, 268, 180, 42],
+    tips : [],
+    finalValues : [],
+    calcTip : function () {
+      for (var i = 0; i < this.bills.length; i++) {
+        if (this.bills[i] < 50) {
+          this.tips.push(this.bills[i] * 0.2);
+          } else if (this.bills[i] >= 50 && this.bills[i] < 200) {
+          this.tips.push(this.bills[i] * 0.15);
+          } else {
+          this.tips.push(this.bills[i] * 0.1);
+          }
+        }
+        for (var i = 0; i < this.tips.length; i++) {
+          this.finalValues.push(this.tips[i] + this.bills[i]);
+        }
+      }
+    }
+  johnBill.calcTip();
+  console.log(johnBill);
+  console.log('John family\' restaurant bills were ' + johnBill.bills + ',' + ' and the tips were ' + johnBill.tips + ',' + ' the total bills were ' + johnBill.finalValues + '.');
+
+  var markBill = {
+    fullName : 'Mark Ivanov',
+    bills : [77, 375, 110, 45],
+    tips : [],
+    finalValues : [],
+    calcTip : function () {
+      for (var i = 0; i < this.bills.length; i++) {
+        if (this.bills[i] < 100) {
+          this.tips.push(this.bills[i] * 0.2);
+        } else if (this.bills[i] >= 100 && this.bills[i] < 300) {
+          this.tips.push(this.bills[i] * 0.1);
+        } else {
+          this.tips.push(this.bills[i] * 0.25);
+        }
+      }
+      for (var i = 0; i < this.tips.length; i++) {
+        this.finalValues.push(this.tips[i] + this.bills[i]);
+      }
+    }
+  }
+
+  markBill.calcTip();
+  console.log(markBill);
+  console.log('Mark family\' restaurant bills were ' + markBill.bills + ',' + ' and the tips were ' + markBill.tips + ',' + ' the total bills were ' + markBill.finalValues + '.');
+  
+  function averageBill(bill) {
+    var sum = 0;
+    for (var i = 0; i < bill.length; i++) {
+      sum += bill[i];
+    }
+    return sum / bill.length;
+  }
+
+  console.log('The average tip of John family\'s was ' + averageBill(johnBill.tips));
+  console.log('The average tip of Mark family\'s was ' + averageBill(markBill.tips));
+
+  if (averageBill(johnBill.tips) > averageBill(markBill.tips)) {
+    console.log('John\'s family paid the highest tips on average');
+  } else if (averageBill(johnBill.tips) < averageBill(markBill.tips)) {
+    console.log('Mark\'s family paid the highest tips on average');
+  } else {
+    console.log('Families paid the same tips on average');
+  }
+
+  </script>
+</body>
+</html>
