@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task 2</title>
+</head>
+<body>
+<script>
+  'use strict'
+
+  function interviewQuestion(profession) {
+
+    return function(naming, name) {
+
+      if (profession === 'teacher') {
+        console.log('What subject do you teach ' + name + '?');
+      } else if (profession === 'designer') {
+        console.log(name + ' can you please explain what UX design is?');
+      } else {
+        console.log('Hello' + ' ' + name + ',' + 'what do you do?');
+      }
+
+    }
+    
+  }
+
+  var professionTeacher = interviewQuestion('teacher');
+  var professionDesigner = interviewQuestion('designer');
+
+  professionTeacher('teacher', 'John');
+  professionDesigner('designer', 'John');
+</script>
+</body>
+</html>
