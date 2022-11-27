@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>ANKETA</title>
+</head>
+<body>
+<script>
+
+	var lastName = prompt('Введите вашу фамилию:', '');
+		if (lastName === null) {
+			prompt('Поробуйте еще раз: ');
+		}
+		if (isNaN(lastName) === false) {
+			prompt('Нужно использовать буквы')
+		}
+	var firstName = prompt('Введите Вашe имя:', '');
+	var secondName = prompt('Введите Ваше отчество:', '');
+	var fullYears = parseInt(prompt('Сколько вам лет:', ''), 10);
+	var gender = confirm('Ваш пол - мужской?');
+	var pension = false;
+
+	if (gender && (fullYears >= 63)) {
+		pension = true;
+	} else if (!gender && (fullYears >= 58)) {
+		pension = true;
+	}
+
+	var fullName = firstName + ' ' + secondName + ' ' + lastName;
+	var ageInDays = Math.floor(fullYears * 365);
+	var futureYears = fullYears + 5;
+
+	var finalMessage = 'ваше ФИО: ' + fullName + '\n' +
+		'ваш возраст в годах: ' + fullYears + '\n' +
+		'ваш возраст в днях: ' + ageInDays + '\n' +
+		'через 5 лет вам будет: ' + futureYears + '\n' +
+		'ваш пол: ' + gender + '\n' +
+		'вы на пенсии: ' + pension;
+
+	alert(finalMessage);
+
+</script>
+</body>
+</html>
