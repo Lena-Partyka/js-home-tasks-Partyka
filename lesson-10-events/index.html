@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <body>
+  <!--<script src="app.js"></script>
+    <h3>Для внесения вашего сайта в каталог, заполните форму:</h3>
+      <p></p>
+      <form>
+        <label>Разработчики:<input type="text"></label><br>
+        <label>Название сайта:<input type="text"></label><br>
+        <label>URL сайта:<input type="text"></label><br>
+        <label>Дата запуска сайта:<input type="date"></label><br>
+        <label>Посетителей в сутки:<input type="number"></label><br>
+        <label>E-mail для связи:<input type="email"></label><br>
+        <legend>Рубрики каталога:
+          <select name="rubric">
+            <option value="household-applianc">бытовая техника</option>
+            <option value="cosmetics">косметика</option>
+            <option value="baby-product">детские товары</option>
+          </select>
+        </legend>
+        <legend>Размещение:
+          <input type="radio" name="payment" value="free"> бесплатное
+          <input type="radio" name="payment" value="paid" checked> платное
+          <input type="radio" name="payment" value="vip"> VIP
+        </legend>
+        <legend>Разрешить отзывы
+          <input type="checkbox">
+        </legend>
+        <label for="message">Описание сайта:<br></label>
+        <textarea id="message" name="message" rows="10" cols="30"></textarea><br>
+        <button type="button" onclick="alert('Cancel')">Опубликовать</button>-->
+    <form action="" name="example"></form>
+    <script>
+    'use strict';
+
+    var elements = [
+      { type: 'text', width: 300, label: 'Разработчики: ', value: '' },
+      { type: 'text', width: 300, label: 'Название сайта: ', value: '' },
+      { type: 'text', width: 300, label: 'URL сайта: ', value: '' },
+      { type: 'text', width: 300, label: 'Дата запуска сайта: ', value: '' },
+      { type: 'text', width: 300, label: 'Посетителей в сутки: ', value: '' },
+      { type: 'text', width: 300, label: 'E-mail для связи: ', value: '' },
+      { type: 'select', label: 'Рубрики каталога: ', name: 'rubric', options: '', value: ['бытовая техника', 'косметика', 'детские товары'] },
+      { type: 'radio', label: 'Размещение', name: 'payment', value: ['платное', 'бесплатное', 'VIP'] },
+      { type: 'checkbox', label: 'Разрешить отзывы' },
+      { type: 'textarea', label: 'Описание сайта', name: 'message', rows: '10', cols: '30'},
+      { type: 'button', value: 'Опубликовать', options: 'onclick' }
+    ];
+
+    function createForm(fName, fElements) {
+      var form = document.forms[fName];
+      //var clone = document.cloneNode(form);
+
+      for (var i = 0; i < fElements.length; i++) {
+        if (fElements[i].type === 'text') {
+          var textElement = createTextElement(fElements[i])
+          form.appendChild(textElement);
+        } else if (fElements[i].type === 'select') {
+          var selectElement = createSelectElement(fElements[i])
+          form.appendChild(selectElement);
+        } else if (fElements[i].type === 'radio') {
+          var radioElement = createRadioElement(fElements[i])
+          form.appendChild(radioElement);
+        } else if (fElements[i].type === 'checkbox') {
+          var checkboxElement = createCheckboxElement(fElements[i])
+          form.appendChild(checkboxElement);
+        } else if (fElements[i].type === 'textarea') {
+          var textareaElement = createTextareaElement(fElements[i])
+          form.appendChild(textareaElement);
+        } else if (fElements[i].type === 'button') {
+          var buttonElement = createButtonElement(fElements[i])
+          form.appendChild(buttonElement);
+        } else {
+          console.log('There is no such type')
+        }
+      }
+      document.replaceChild(form, clone);
+    }
+
+    function createTextElement(data) {
+      var div = document.createElement('div');
+      var label = createLabel(data.label);
+      div.appendChild(label);
+      var input = document.createElement('input');
+      input.setAttribute('value', data.value);
+      div.appendChild(input);
+      return div;
+    }
+
+    function createSelectElement(data) {
+      var div = document.createElement('div');
+      var label = createLabel(data.label);
+      div.appendChild(label);
+      var select = document.createElement('select');
+      select.setAttribute('name', data.name);
+      var values = data.value;
+      for (var val of values) {
+        var option = document.createElement("option");
+        option.value = val;
+        option.text = val.charAt(0).toUpperCase() + val.slice(1);
+        select.appendChild(option);
+      }
+      div.appendChild(select);
+      return div;
+    }
+
+    //у меня ступор, почему не отображается значок радиокнопки
+    function createRadioElement(data) {
+      var div = document.createElement('div');
+      var label = createLabel(data.label);
+      div.appendChild(label);
+      var type = data.type;
+      var name = data.name;
+      var options = data.value;
+      for (var i = 0; i < options.length; i++) {
+        div.appendChild(document.createElement(type, name));
+        div.appendChild(document.createTextNode(options[i]));
+      }
+      return div;
+    }
+
+    function createCheckboxElement(data) {
+      var div = document.createElement('div');
+      var label = createLabel(data.label);
+      div.appendChild(label);
+      var checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.name = 'payment';
+      checkbox.value = 'free';
+      div.appendChild(checkbox);
+      return div;
+    }
+
+    function createTextareaElement(data) {
+      var div = document.createElement('div');
+      var label = createLabel(data.label);
+      div.appendChild(label);
+      var textarea = document.createElement('textarea');
+      div.appendChild(textarea);
+      return div;
+    }
+
+    function createButtonElement() {
+      var div = document.createElement('div');
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.innerHTML = 'Cancel';
+      div.appendChild(button);
+      return div;
+    }
+
+    function createLabel(content) {
+      var label = document.createElement('label');
+      var text = document.createTextNode(content);
+      label.appendChild(text);
+      return label;
+    }
+
+    createForm('example', elements);
+
+    </script>
+
+  </body>
+</html>
