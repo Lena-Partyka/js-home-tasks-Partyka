@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>B2</title>
+</head>
+<body>
+  <button onclick="addInfoAboutDrink()">Ввод информации о напитке</button>
+  <button onclick="getInfoAboutDrink()">Получение информации о напитке</button>
+  <button onclick="deleteDrink()">Удаление информации о напитке</button>
+  <button onclick="showAllDrinks()">Перечень всех напитков</button>
+  <div id="message">Информационное окно</div>
+  <script src="HashStorage.js"></script>
+  <script>
+      //'use strict'
+      var drinkStorage = new THashStorage();
+
+      function addInfoAboutDrink () {
+        var drinkName = prompt('Введите название напитка:');
+        var infoDrink = {};
+
+        if (drinkName) {
+          infoDrink.hasAlcohol = confirm('Напиток алкогольный?') ? 'да' : 'нет';
+          infoDrink.recipe = prompt('Напишите рецепт его приготовления:');
+          return drinkStorage.addValue(drinkName, infoDrink);
+        } else {
+          alert('Ввод отменен!')
+        }
+      }
+
+      function getInfoAboutDrink() {
+        var drinkName = prompt('Введите название напитка:');
+        var presence = (drinkName) ? drinkStorage.getValue(drinkName) : 0;
+        var infoCoctail = '';
+        if (presence) {
+          var infoCoc = 'Напиток: ' + drinkName + '<br>';
+          var infoAlc = 'Алкогольный: ' + presence.hasAlcohol + '<br>';
+          var infoRec = 'Рецепт приготовления: ' + presence.recipe + '<br>';
+          infoCoctail = infoCoc + infoAlc + infoRec;
+        } else {
+          infoCoctail = 'Такого напитка нет в хранилище!';
+        }
+        document.getElementById('message').innerHTML = infoCoctail;
+      }
+
+      function deleteDrink() {
+        var drinkName = prompt('Введите название напитка, который нужно удалить: ');
+        var del = drinkStorage.deleteValue(drinkName);
+        var infoCoctail = '';
+
+        if (del) {
+          infoCoctail = 'Напиток ' + drinkName + 'удален из хранилища'
+        } else {
+          infoCoctail = 'Такого напитка нет в хранилище!';
+        }
+        document.getElementById('message').innerHTML = infoCoctail;
+      }
+
+      function showAllDrinks() {
+        var allDrinks = drinkStorage.getKeys();
+        var infoCoctail = '';
+
+        if (allDrinks.length) {
+          for (var i = 0; i < allDrinks.length; i++) {
+            infoCoctail += (i + 1) + allDrinks[i];
+          }
+        } else {
+          infoCoctail = 'Вы не сохранили ни одного напитка.'
+        }
+        document.getElementById('message').innerHTML = infoCoctail;
+      }
+  </script>
+</body>
+</html>
