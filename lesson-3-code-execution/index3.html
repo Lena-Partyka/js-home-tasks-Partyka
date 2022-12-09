@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport">
+  <title>Task 2</title>
+</head>
+<body>
+<script>
+  'use strict';
+
+  var arrayNum = [];
+
+  while(true) {
+    var num = prompt('Введите число', '0');
+    if (num === "" || num === null || isNaN(num)) break;
+    else arrayNum.push(+num);
+  }
+
+  var sum = 0;
+  for (var i=0; i < arrayNum.length; i++) {
+    sum += arrayNum[i];
+  }
+  alert(sum);
+
+</script>
+</body>
+</html>

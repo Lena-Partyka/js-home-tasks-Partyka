@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport">
+  <title>Task 2</title>
+</head>
+<body>
+<script>
+  'use strict';
+
+  let image = {
+    width: 100,
+    height: 400,
+    title: 'Cool image'
+  };
+
+  function multiplyNumeric(image) {
+
+    for (let value in image) {
+      if (typeof image[value] == "number") {
+        image[value] = image[value] * 2; /*почему нельзя использовать . для доступа? потому что для именования свойств используем строковое значение?*/
+      }
+    }
+    return image;
+  }
+
+  console.log(multiplyNumeric(image));
+
+</script>
+</body>
+</html>
