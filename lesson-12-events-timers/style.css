@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+}
+#wrapper {
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  background-color: yellowgreen;
+}
+
+#circleWithNum {
+  position: absolute;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: orange;
+  line-height: 40px;
+  font-size: 20px;
+}
+
+.smartClock, .arrowHours, .arrowMinutes, .arrowSeconds {
+  position: absolute;
+}
+
+.smartClock {
+  width: 120px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 25px;
+  color: black;
+}
+
+.arrowHours, .arrowMinutes, .arrowSeconds {
+  border-radius: 10px;
+  background: black;
+}
+
+.arrowHours {
+  width: 9px;
+  height: 60px;
+}
+
+.arrowMinutes {
+  width: 5px;
+  height: 120px;
+}
+
+.arrowSeconds {
+  width: 2px;
+  height: 145px;
+  background: red;
+}
