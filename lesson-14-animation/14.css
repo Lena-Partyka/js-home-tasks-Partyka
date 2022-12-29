@@ -1,0 +1,30 @@
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+#board {
+  position: absolute;
+  background-color: #F0EE7E;
+}
+
+#ball {
+  position: absolute;
+  border-radius: 50%;
+  background: red;
+}
+
+.leftPlayer {
+  position: absolute;
+  background: green;
+}
+
+.rightPlayer {
+  position: absolute;
+  background: blue;
+}
+
+.leftPlayer, .rightPlayer {
+  position: absolute;
+}
