@@ -46,11 +46,13 @@
       <div id="message" class="drink-info"></div>
     </div>
     <!--<script src="hashstorage.js"></script>-->
-    <script src="localstorage.js"></script>
+    <!--<script src="localstorage.js"></script>-->
+    <script src="library/jquery-3.2.1.min.js"></script>
+    <script src="ajaxstringstorage.js"></script>
     <script>
       'use strict';
 
-      var drinkStorage = new TLocalStorage('DRINKS');
+      var drinkStorage = new AjaxStringStorage("DRINKS");
 
       function addDrink() {
         var drinkName = prompt('Введите название напитка', 'Test Drink').toLowerCase().trim();
